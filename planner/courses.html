@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Course Offerings</title>
+	<link href="bootstrap.min.css" rel="stylesheet">
+	<style>
+		.table-responsive {
+			margin-bottom: 2rem;
+		}
+		.disabled-row {
+			opacity: 0.5;
+		}
+	</style>
+</head>
+<body>
+	<div class="container mt-5">
+		<h1 class="mb-4">Course Offering</h1>
+		
+		<h2>Course Waiver Selection</h2>
+		<div id="courseWaiverList" class="mb-5"></div>
+		
+		<h2>Courses by Year and Semester</h2>
+		<div id="courseList"></div>
+	</div>
+
+	<script src="bootstrap.bundle.min.js"></script>
+	<script>
+		const plan={
+			"B":{
+				"t":"B",
+				"b":"secondary",
+				"n":"Programming Fundamentals (CSC500)",
+				"c":"Must be taken if the student doesn't have sufficient programming experience"
+			},
+			"C01":{
+				"t":"C01",
+				"b":"primary",
+				"n":"Programming workshop (CSC601)"
+			},
+			"C02":{
+				"t":"C02",
+				"b":"primary",
+				"n":"Applied Artificial Intelligence (CSC625)"
+			},
+			"C03":{
+				"t":"C03",
+				"b":"primary",
+				"n":"Software Quality (CSC 640)"
+			},
+			"C04":{
+				"t":"C04",
+				"b":"primary",
+				"n":"SQL and NoSQL Databases (CSC650)"
+			},
+			"C05":{
+				"t":"C05",
+				"b":"primary",
+				"n":"Operating Systems (CSC 560) OR Cloud Computing (MCY 611)"
+			},
+			"C06":{
+				"t":"C06",
+				"b":"primary",
+				"n":"Cybersecurity Fundamentals (MCY 601) OR Network Security (MCY 602)"
+			},
+			"C07":{
+				"t":"C07",
+				"b":"primary",
+				"n":"IT Project Management (MBI 650)"
+			},
+			"E01":{
+				"t":"E",
+				"b":"info",
+				"n":"Elective 1"
+			},
+			"E02":{
+				"t":"E",
+				"b":"info",
+				"n":"Elective 2"
+			},
+			"P":{
+				"t":"P",
+				"b":"success",
+				"n":"Co-op/Internship"
+			}
+		};
+
+		const courseData={
+			"Programming Fundamentals (CSC500)":{
+				"b":"B",
+				"bc":"secondary",
+				"m": "in person",
+				"t":[
+					"2024_F_10",
+					"2025_F_10",
+					"2026_F_10",
+					"2027_F_10",
+					"2028_F_10"
+				]
+			},
+			"Advanced Programming Methods (CSC 502)":{
+				"b":"C03",
+				"bc":"primary",
+				"m": "in person",
+				"t":[
+					"2024_F_11"
+				]
+			},
+			"Advanced Programming (CSC601)":{
+				"b":"C01",
+				"bc":"primary",
+				"m": "online",
+				"t":[
+					"2025_F_01",
+					"2026_F_01",
+					"2027_F_01",
+					"2028_F_01"
+				]
+			},
+			"Applied Artificial Intelligence (CSC625)":{
+				"b":"C02",
+				"bc":"primary",
+				"m": "in person",
+				"t":[
+					"2025_S_10",
+					"2026_S_10",
+					"2027_S_10",
+					"2028_S_10"
+				]
+			},
+			"Software Design (CSC 596)":{
+				"b":"C03",
+				"bc":"primary",
+				"m": "in person",
+				"t":[
+					"2024_F_11"
+				]
+			},
+			"Software Quality (CSC 640)":{
+				"b":"C03",
+				"bc":"primary",
+				"m": "online",
+				"t":[
+					"2025_F_01",
+					"2026_F_01",
+					"2027_F_01",
+					"2028_F_01"
+				]
+			},
+			"SQL and NoSQL Databases (CSC650)":{
+				"b":"C04",
+				"bc":"primary",
+				"m": "online",
+				"t":[
+					"2025_S_01",
+					"2026_S_01",
+					"2027_S_01",
+					"2028_S_01"
+				]
+			},
+			"Operating Systems (CSC 560)":{
+				"b":"C05",
+				"bc":"primary",
+				"m": "in person",
+				"t":[
+					"2024_F_11"
+				]
+			},
+			"Cloud Computing (MCY 611)":{
+				"b":"C05",
+				"bc":"primary",
+				"m": "online",
+				"t":[
+					"2025_S_10",
+					"2025_F_10",
+					"2026_M_10",
+					"2027_S_10",
+					"2027_F_10",
+					"2028_M_10"
+				]
+			},
+			"Cybersecurity Fundamentals (MCY 601)":{
+				"b":"C06",
+				"bc":"primary",
+				"m": "online",
+				"t":[
+					"2024_F_10",
+					"2025_S_10",
+					"2025_M_10",
+					"2025_F_10",
+					"2026_S_10",
+					"2026_M_10",
+					"2026_F_10",
+					"2027_S_10",
+					"2027_M_10",
+					"2027_F_10",
+					"2028_S_10",
+					"2028_M_10",
+					"2028_F_10"
+				]
+			},
+			"Network Security (MCY 602)":{
+				"b":"C06",
+				"bc":"primary",
+				"m": "online",
+				"t":[
+					"2024_F_01",
+					"2025_S_01",
+					"2025_M_01",
+					"2025_F_01",
+					"2026_S_01",
+					"2026_M_01",
+					"2026_F_01",
+					"2027_S_01",
+					"2027_M_01",
+					"2027_F_01",
+					"2028_S_01",
+					"2028_M_01",
+					"2028_F_01"
+				]
+			},
+			"Computer Security (CSC 482)":{
+				"b":"C06",
+				"bc":"primary",
+				"m": "in person",
+				"t":[
+					"2024_F_11"
+				]
+			},
+			"IT Project Management (MBI 650)":{
+				"b":"C07",
+				"bc":"primary",
+				"m": "online",
+				"t":[
+					"2024_F_10",
+					"2025_S_01",
+					"2025_F_10",
+					"2026_S_01",
+					"2026_F_10",
+					"2027_S_01",
+					"2027_F_10",
+					"2028_S_01",
+					"2028_F_10"
+				]
+			},
+			"Data Visualization and Analytics (MBI 664)":{
+				"b":"E",
+				"bc":"info",
+				"t":[
+					"2024_F_10",
+					"2025_S_01",
+					"2025_F_10",
+					"2026_S_01",
+					"2026_F_10",
+					"2027_S_01",
+					"2027_F_10",
+					"2028_S_01",
+					"2028_F_10"
+				]
+			},
+			"Business Analytics (MBI 684)":{
+				"b":"E",
+				"bc":"info",
+				"t":[
+					"2024_F_01",
+					"2025_M_10",
+					"2025_F_01",
+					"2026_M_10",
+					"2026_F_01",
+					"2027_M_10",
+					"2027_F_01",
+					"2028_M_10"
+				]
+			},
+			"Business Intelligence Development (MBI 660)":{
+				"b":"E",
+				"bc":"info",
+				"t":[
+					"2025_S_10",
+					"2025_M_01",
+					"2026_S_10",
+					"2026_M_01",
+					"2027_S_10",
+					"2027_M_01",
+					"2028_S_10",
+					"2028_M_01"
+				]
+			},
+			"Data Privacy (MCY 620)":{
+				"b":"E",
+				"bc":"info",
+				"t":[
+					"2024_F_10",
+					"2025_M_10",
+					"2026_S_10",
+					"2026_F_10",
+					"2027_M_10",
+					"2028_S_10",
+					"2028_F_10"
+				]
+			},
+			"Web Security (MCY 670)":{
+				"b":"E",
+				"bc":"info",
+				"t":[
+					"2025_S_01",
+					"2025_F_01",
+					"2026_S_01",
+					"2026_F_01",
+					"2027_S_01",
+					"2027_F_01",
+					"2028_S_01",
+					"2028_F_01"
+				]
+			},
+			"Blockchain and Ethereum development (CSC 696)":{
+				"b":"E",
+				"bc":"info",
+				"m": "in person",
+				"t":[
+					"2024_F_11"
+				]
+			},
+			"Security Architecture (MCY 630)":{
+				"b":"E",
+				"bc":"info",
+				"t":[
+					"2024_F_01",
+					"2025_M_01",
+					"2026_S_01",
+					"2026_F_01",
+					"2027_M_01",
+					"2028_S_01",
+					"2028_F_01"
+				]
+			},
+			"Co-op/Internship":{
+				"b":"P",
+				"bc":"success",
+				"m": "in person",
+				"t":[
+					"2024_F_11",
+					"2025_S_11",
+					"2025_M_11",
+					"2025_F_11",
+					"2026_S_11",
+					"2026_M_11",
+					"2026_F_11",
+					"2027_S_11",
+					"2027_M_11",
+					"2027_F_11",
+					"2028_S_11",
+					"2028_M_11",
+					"2028_F_11"
+				]
+			}
+		};
+
+		const waivedCourses = new Set();
+		const selectedt = {};
+
+		function generateCourseWaiverList() {
+			const courseWaiverList = document.getElementById('courseWaiverList');
+			const table = document.createElement('table');
+			table.className = 'table table-striped table-bordered';
+			
+			const thead = document.createElement('thead');
+			thead.innerHTML = `
+				<tr>
+					<th>Course Name</th>
+					<th>Must take?</th>
+				</tr>
+			`;
+			table.appendChild(thead);
+
+			const tbody = document.createElement('tbody');
+			Object.keys(plan).forEach(course => {
+				const row = document.createElement('tr');
+				row.innerHTML = `
+					<td>
+						<span class="badge bg-${plan[course].b}">${course}</span> ${plan[course].n}
+						${plan[course].c ? '<div><small class="text-muted">'+plan[course].c+'</small></div>' : '' }
+						</td>
+					<td>
+						<div class="form-check form-check-inline">
+							<input class="form-check-input" type="radio" name="${course}-waiver" id="${course}-waiver-no" value="no" checked>
+							<label class="form-check-label" for="${course}-waiver-no">Yes</label>
+						</div>
+						<div class="form-check form-check-inline">
+							<input class="form-check-input" type="radio" name="${course}-waiver" id="${course}-waiver-yes" value="yes">
+							<label class="form-check-label" for="${course}-waiver-yes">No</label>
+						</div>
+					</td>
+				`;
+				tbody.appendChild(row);
+
+				// Add event listener for radio buttons
+				row.querySelectorAll('input[type="radio"]').forEach(radio => {
+					radio.addEventListener('change', (event) => {
+						if (event.target.value === 'yes') {
+							waivedCourses.add(course);
+							delete selectedt[course];
+						} else {
+							waivedCourses.delete(course);
+						}
+						generateCourseList(); // Regenerate the course list to reflect changes
+					});
+				});
+			});
+			table.appendChild(tbody);
+
+			courseWaiverList.appendChild(table);
+		}
+
+		function generateCourseList() {
+			const courseList = document.getElementById('courseList');
+			courseList.innerHTML = ''; // Clear previous content
+			const years = new Set();
+			const semesters = {'F': 'Fall', 'S': 'Spring', 'M': 'Summer'};
+
+			// Get all unique years
+			for (const course in courseData) {
+				courseData[course].t.forEach(term => {
+					years.add(term.split('_')[0]);
+				});
+			}
+
+			// Sort years
+			const sortedYears = Array.from(years).sort();
+
+			sortedYears.forEach(year => {
+				Object.keys(semesters).forEach(semester => {
+					const coursesInSemester = [];
+
+					for (const course in courseData) {
+						const t = courseData[course].t.filter(term => term.startsWith(`${year}_${semester}`));
+						if (t.length > 0) {
+							coursesInSemester.push({
+								type: courseData[course].b,
+								color: courseData[course].bc,
+								name: course,
+								mode: courseData[course].m,
+								firstHalf: t.some(term => term.endsWith('10') || term.endsWith('11')),
+								secondHalf: t.some(term => term.endsWith('01') || term.endsWith('11')),
+								waived: waivedCourses.has(course),
+								term: `${year}_${semester}`
+							});
+						}
+					}
+
+					console.log(coursesInSemester)
+					if (coursesInSemester.length > 0) {
+						const semesterHeader = document.createElement('h3');
+						semesterHeader.textContent = `${year} ${semesters[semester]}`;
+						courseList.appendChild(semesterHeader);
+
+						const tableResponsive = document.createElement('div');
+						tableResponsive.className = 'table-responsive';
+						const table = document.createElement('table');
+						table.className = 'table table-striped table-bordered';
+						
+						const thead = document.createElement('thead');
+						thead.innerHTML = `
+							<tr>
+								<th>Course Name</th>
+								<th>Mode</th>
+								<th>First Half</th>
+								<th>Second Half</th>
+								<th>Take this term?</th>
+							</tr>
+						`;
+						table.appendChild(thead);
+
+						const tbody = document.createElement('tbody');
+						coursesInSemester.forEach(course => {
+							const row = document.createElement('tr');
+							if (course.waived) {
+								row.classList.add('table-success');
+							} else if (selectedt[course.name] === course.term) {
+								row.classList.add('table-info');
+							} else if (selectedt[course.name] && selectedt[course.name] !== course.term) {
+								row.classList.add('disabled-row');
+							}
+							row.innerHTML = `
+								<td><span class="badge bg-${course.color}">${course.type}</span> ${course.name}</td>
+								<td>${course.mode}</td>
+								<td>${course.firstHalf ? '✓' : ''}</td>
+								<td>${course.secondHalf ? '✓' : ''}</td>
+								<td>
+									<div class="form-check">
+										<input class="form-check-input" type="checkbox" name="${course.name}-term" id="${course.name}-${course.term}" value="${course.term}" ${selectedt[course.name] === course.term ? 'checked' : ''} ${course.waived ? 'disabled' : ''}>
+										<label class="form-check-label" for="${course.name}-${course.term}">Select</label>
+									</div>
+								</td>
+							`;
+							tbody.appendChild(row);
+
+							// Add event listener for checkboxes
+							const checkbox = row.querySelector('input[type="checkbox"]');
+							checkbox.addEventListener('change', (event) => {
+								if (event.target.checked) {
+									selectedt[course.name] = course.term;
+								} else {
+									delete selectedt[course.name];
+								}
+								generateCourseList(); // Regenerate the course list to reflect changes
+							});
+						});
+						table.appendChild(tbody);
+
+						tableResponsive.appendChild(table);
+						courseList.appendChild(tableResponsive);
+					}
+				});
+			});
+		}
+
+		generateCourseWaiverList();
+		generateCourseList();
+	</script>
+</body>
+</html>
