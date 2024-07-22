@@ -100,7 +100,7 @@
 				]
 			},
 			"Advanced Programming Methods (CSC 502)":{
-				"b":"C03",
+				"b":"C01",
 				"bc":"primary",
 				"m": "in person",
 				"t":[
@@ -432,10 +432,14 @@
 			sortedYears.forEach(year => {
 				Object.keys(semesters).forEach(semester => {
 					const coursesInSemester = [];
-
+					
+					console.log('waivedCourses')
+					console.log(waivedCourses)
+					console.log('all')
 					for (const course in courseData) {
 						const t = courseData[course].t.filter(term => term.startsWith(`${year}_${semester}`));
 						if (t.length > 0) {
+							console.log(courseData[course])
 							coursesInSemester.push({
 								type: courseData[course].b,
 								color: courseData[course].bc,
@@ -443,7 +447,7 @@
 								mode: courseData[course].m,
 								firstHalf: t.some(term => term.endsWith('10') || term.endsWith('11')),
 								secondHalf: t.some(term => term.endsWith('01') || term.endsWith('11')),
-								waived: waivedCourses.has(course),
+								waived: waivedCourses.has(courseData[course].b),
 								term: `${year}_${semester}`
 							});
 						}
