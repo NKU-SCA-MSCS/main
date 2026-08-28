@@ -13,6 +13,8 @@ Go [back to the main page](./README.md)
 - [Is an internship or co-op experience required as part of the MSCS curriculum?](#is-an-internship-or-co-op-experience-required-as-part-of-the-mscs-curriculum)
 - [Can I transfer credits from another institution towards the MSCS degree?](#can-i-transfer-credits-from-another-institution-towards-the-mscs-degree)
 - [What career opportunities are available for graduates of the MSCS program?](#what-career-opportunities-are-available-for-graduates-of-the-mscs-program)
+
+**Scholarships & Assistantships**
 - [Are there any scholarships or financial aid options available for MSCS students?](#are-there-any-scholarships-or-financial-aid-options-available-for-mscs-students)
 
 **General FAQs:**
