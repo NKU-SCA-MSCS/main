@@ -14,7 +14,7 @@ Go [back to the main page](./README.md)
 - [Can I transfer credits from another institution towards the MSCS degree?](#can-i-transfer-credits-from-another-institution-towards-the-mscs-degree)
 - [What career opportunities are available for graduates of the MSCS program?](#what-career-opportunities-are-available-for-graduates-of-the-mscs-program)
 
-**Scholarships & Assistantships**
+**[Scholarships & Assistantships](#scholarships-and-assistanships)**
 - [Are there any scholarships or financial aid options available for MSCS students?](#are-there-any-scholarships-or-financial-aid-options-available-for-mscs-students)
 
 **General FAQs:**
@@ -71,11 +71,36 @@ Students may transfer up to nine semester hours of appropriate, acceptable gradu
 ### What career opportunities are available for graduates of the MSCS program?
 Graduates may pursue roles in artificial intelligence, cloud computing, cybersecurity, and various other computer science fields.
 
-### Are there any scholarships or financial aid options available for MSCS students?
-Unfortunately, NKU does not offer graduate scholarship. However, for more comprehensive information about scholarships and financial aid, please contact the financial aid office for more information.
-
 ---
 
+## Scholarships and assistanships
+### Are there any scholarships or financial aid options available for MSCS students?
+Unfortunately, NKU does not offer graduate scholarships. For more information about scholarships and financial aid, please contact the financial aid office.
+A number of graduate assistantships are available. In addition, funding for research assistantships is available through individual faculty.
+
+### Are scholarships or financial aid available for MSCS students?
+NKU does not generally offer graduate scholarships through the MSCS program. Students should contact the Financial Aid Office for information about other financial aid options. Limited departmental funding may become available in some cases.
+
+### Are Graduate Assistantships available to MSCS students?
+Yes. The MSCS program has a limited number of Graduate Assistantships. These positions are typically offered to current students and are not guaranteed before enrollment.
+
+### Are Research Assistantships available?
+Yes, depending on faculty projects and funding. Research Assistantships are usually supported by individual faculty research grants and are generally arranged after a student enrolls.
+
+### Can MSCS students conduct research with faculty outside the program?
+Yes. MSCS students may have opportunities to work with faculty across NKU, not only professors who teach in the MSCS program.
+
+### Is funding available for research expenses?
+Funding may be available for expenses such as conference travel or publication fees, depending on departmental or university resources.
+
+### Are internships available to MSCS students?
+Yes. MSCS students may pursue internship opportunities, subject to applicable university policies and U.S. immigration and employment authorization requirements.
+
+### How to explore funding opportunities?
+Prospective students should first apply and gain admission to the MSCS program. After enrollment, students can explore Graduate Assistantships, faculty-funded research positions, and other available funding opportunities.
+Keep in mind that admission does not guarantee funding. All assistantships and other funding opportunities are limited and depend on availability, faculty grants, departmental decisions, and individual circumstances.
+
+---
 
 ## General FAQs
 
