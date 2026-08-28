@@ -6,6 +6,12 @@ This repository is designed to help students learn more about the program and su
 # Structure of the program
 ![structure.png](./assets/structure.png)
 
+# Curriculum planner
+To make it easier to plan your curriculum, please use the planner at https://nku-sca-mscs.github.io/main/planner/
+
+# Program Director
+For any questions, please contact Dr. Nicholas Caporusso (caporusson1@nku.edu)
+
 ## Resources
 - **Program description**: visit the [MSCS program description page](./MSCS-program-description.md).
 - **Course catalog**: [https://www.nku.edu/admissions/graduate/current-students/Catalog.html](https://www.nku.edu/registrar/catalog/index.html)
